@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>google maps</title>
+  <title>Simple Map</title>
+
+
+  <link rel="stylesheet" type="text/css" href="css.css">
+
 </head>
 <body>
+<div id="map"></div>
 
+<!--
+ The `defer` attribute causes the callback to execute after the full HTML
+ document has been parsed. For non-blocking uses, avoiding race conditions,
+ and consistent behavior across browsers, consider loading using Promises
+ with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+-->
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBep00Ryhyqv9Ao-z4YHapbLj4_4qmZuX4&callback=initMap&v=weekly"
+  defer>
+</script>
+<script type="module" src="javasc.js"></script>
 </body>
 </html>

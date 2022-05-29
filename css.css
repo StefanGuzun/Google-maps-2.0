@@ -3,59 +3,11 @@
  * that contains the map.
  */
 #map {
-  height: 700px;
-  width: 800px;
-  position: relative;
-  top: 30px;
+  height: 720px;
+  width: 1400px;
+  margin: 0 auto;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   border-radius: 10px;
 }
 
-.container{
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  /*flex-wrap: wrap;*/
-}
-.upper{
-  width: 300px;
-  height: 300px;
-  background-repeat: no-repeat;
-  position: relative;
-  top: 30px;
-}
-.under{
-  width: 300px;
-  height: 300px;
-  background-repeat: no-repeat;
-  /*margin-top: 45px;*/
-}
-.container2{
-  width: 300px;
-}
-.container3{
-  width: 300px;
-}
-/*
- * Optional: Makes the sample page fill the window.
- */
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-h1{
-  font-family: 'Bebas Neue', cursive;
-  text-align: center;
-  text-shadow: 0px 3px 0px #b2a98f,
-  0px 14px 10px rgba(0,0,0,0.15),
-  0px 24px 2px rgba(0,0,0,0.1),
-  0px 34px 30px rgba(0,0,0,0.1);
-}
-.img{
-  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-  border-radius: 10px;
-}
 

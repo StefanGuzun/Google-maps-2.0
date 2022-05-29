@@ -7,6 +7,10 @@ let polygonsCoords = [];
 const remove = document.querySelector('.remove');
 const allClear = document.querySelector('.all-clear');
 
+const easterEgg = document.querySelector(".easterEgg");
+const easterTxt = document.querySelector(".easterTxt");
+const easterEgg2 = document.querySelector(".easterEggSec");
+
 const initMap = () => {
 
   const centerOfMap = new google.maps.LatLng(46.93542736234682, 28.935191192528553);
@@ -48,7 +52,12 @@ remove.addEventListener('click', () => {
 });
 
 
-
 }
 
 window.initMap = initMap();
+
+//gigachad
+easterEgg.addEventListener("click", (e) => {
+  easterTxt.innerHTML = "Alexandru";
+  easterEgg2.src = "img/drianmalcolm-696x442.png"
+})

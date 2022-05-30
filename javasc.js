@@ -1,76 +1,50 @@
+// This example requires the Drawing library. Include the libraries=drawing
+// parameter when you first load the API. For example:
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=drawing">
+
 let map;
-let poly;
-// let lines = []
-const removeMarker = document.querySelector('.remove');
+let polygonsCoords = [];
+const remove = document.querySelector('.remove');
 const allClear = document.querySelector('.all-clear');
 
+const initMap = () => {
 
-//placeMarker
-function placeMarker(location) {
-  const marker = new google.maps.Marker({
-    position: location,
-    map: map
+  const centerOfMap = new google.maps.LatLng(46.93542736234682, 28.935191192528553);
+  const options = {
+    center: centerOfMap,
+    zoom: 8
+  };
+
+  map = new google.maps.Map(document.querySelector('#map'), options);
+
+ let drawingManager = new google.maps.drawing.DrawingManager({
+      drawingControl: true,
+      drawingControlOptions: {
+          position: google.maps.ControlPosition.TOP_CENTER,
+          drawingModes: [
+            google.maps.drawing.OverlayType.POLYGON,
+          ],
+
+      },
   });
-}
+  drawingManager.setMap(map);
 
-//map
-function initMap() {
-  
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8,
-  });
 
-  //lines
-  poly = new google.maps.Polyline({
-    strokeColor: "#000000",
-    strokeOpacity: 1.0,
-    strokeWeight: 3,
-  });
-  poly.setMap(map);
-  // Add a listener for the click event
-  map.addListener("click", addLatLng);
-}
-// Handles click events on a map, and adds a new point to the Polyline.
-function addLatLng(event) {
-  const path = poly.getPath();
-  path.push(event.latLng);
-
- 
-  
-  // Add a new marker at the new plotted point on the polyline.
-  new google.maps.Marker({
-    position: event.latLng,
-    title: "#" + path.getLength(),
-    map: map,
-  });
-
-  //placeMarker
-  google.maps.event.addListener(map, 'click', function(event) {
-    placeMarker(event.latLng);
-  });
-
-  //removeMarker
-allClear.addEventListener('click', (e) => {
-   path.pop();
-   
-  // console.log(path)
+//push 1 figure in an array
+  google.maps.event.addListener(drawingManager, 'overlaycomplete', (event) => {
+    polygonsCoords.push(event.overlay);
 });
 
-  
+
+//clear one figure
+allClear.addEventListener('click', () => {
+  const lastOverlay = polygonsCoords.shift();
+  if (lastOverlay) lastOverlay.setMap(null);
+});
+
+
+
+
 }
 
-
-
-
 window.initMap = initMap();
-
-
-//gigachad
-const easterEgg = document.querySelector(".easterEgg");
-const easterTxt = document.querySelector(".easterTxt");
-const easterEgg2 = document.querySelector(".easterEggSec");
-easterEgg.addEventListener("click", (e) => {
-  easterTxt.innerHTML = "Alexandru";
-  easterEgg2.src = "img/drianmalcolm-696x442.png"
-})
